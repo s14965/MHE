@@ -20,9 +20,10 @@ def goalFunction(solution, edges):
                                          * ( len(solution)  - 1 ) )
 
 print(goalFunction([6,7,4,5], edges))
-print(goalFunction([2,3,4,5], edges))
 print(goalFunction([2,3,4,6], edges))
 print(goalFunction([2,3,4,7], edges))
-print(goalFunction([1,2,3,4,5], edges))
+print(goalFunction([2,3,4,5], edges))
 
-print(bruteforce.bruteforce(nodes, edges))
+solution = bruteforce.bruteforce(nodes, edges)
+print(goalFunction(solution, edges))
+print(solution)

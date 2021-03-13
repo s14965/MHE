@@ -1,3 +1,5 @@
+import random
+
 def countConnections(node, edges):
     con = 0
     for i in edges:
@@ -14,3 +16,16 @@ def isclique(solution, edges):
             else:
               return False     
     return True
+
+def randSolution(nodes):
+    size = random.randrange(3, len(nodes))
+    
+    solution = []
+    i=0
+    while(i < size):
+        choice = random.choice(nodes)
+        if choice not in solution:
+            solution.append(choice)
+            i += 1
+    return solution
+        
