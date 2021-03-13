@@ -2,13 +2,18 @@ import sys
 import inputhandler
 import utility
 
-#nodes, edges = inputhandler.handlinginput(sys.argv)
+#nodes, edges = inputhandler.handlingInput(sys.argv)
 
 def goalFunction(solution, edges):
     evaluations = []
     for s in solution:
         evaluations.append(utility.countConnections(s, edges))
-    return sum(evaluations)/(len(nodes)*len(solution)*(len(solution)-1))
+            
+    if utility.isclique(solution, edges):
+        penalty = 0
+    else:
+        penalty = -1
+    return penalty + sum(evaluations) / ( len(nodes) * len(solution) * ( len(solution)  - 1 ) )
 
 #example
 nodes = [1, 2, 3, 4, 5, 6, 7]
@@ -20,4 +25,6 @@ edges = [
             [6, 7]
          ]
 
+print(goalFunction([6,7,4,5], edges))
 print(goalFunction([2,3,4,5], edges))
+print(goalFunction([1,2,3,4,5], edges))
